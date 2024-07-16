@@ -1,0 +1,408 @@
+\documentclass[12pt]{article}
+\usepackage{mathtools}
+\usepackage{fontspec}
+% \usepackage[left=1.06cm,top=0.9cm,right=1.06cm,bottom=0.49cm]{geometry}
+% \setmainfont{GFS Didot}
+\setmainfont{EB Garamond}
+
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=1.5cm,left=1cm,right=1cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\parindent}{0pt}
+
+
+% Useful packages
+\usepackage{graphicx}
+\graphicspath{{./media/}}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{siunitx}
+\usepackage{sectsty}
+\sectionfont{\fontsize{12}{15}\selectfont}
+
+\title{\vspace{-2cm}033 - Διατάξεις Υψηλών Συχνοτήτων \\ 
+        \large 2η Σειρά Ασκήσεων}
+\author{Ιωάννης Δημουλιός \\ 
+        \large 10641}
+\date{Εαρινό εξάμηνο 2024}
+
+\lhead{033-Διατάξεις Υψηλών Συχνοτήτων}
+\chead{2η Σειρά Ασκήσεων}
+\rhead{Ιωάννης Δημουλιός}
+\begin{document}
+\maketitle
+
+\section*{2.1 Μέτρηση διηλεκτρικής σταθεράς υλικού με κυματοδηγό} 
+\textbf{(α)} Υποθέτουμε ότι η χαρακτηριστική αντίσταση του κυματοδηγού για τον επικρατέστερο ρυθμό \(\text{ΤΕ}_{01}\) όταν είναι κενός και όταν γεμίζει με διηλεκτρικό είναι αντίστοιχα \(Z_0 \) και \(Z_1\). Επίσης, υποθέτουμε ότι η σύνθετη αντίσταση που φαίνεται από το σημείο που ξεκινά η γέμιση με διηλεκτρικό για κάθε πείραμα είναι αντίστοιχα \(Z_A \) και \(Z_B\). Τέλος γράφουμε τις δύο μετρήσεις που έγιναν στην είσοδο του κυματοδηγού \(Z_X\) και \(Z_Y\) αντίστοιχα. 
+
+Η συχνότητα αποκοπής του επικρατέστερου ρυθμού στον κυματοδηγό και σταθερά διάδοσης εν κενώ γράφονται
+\begin{equation}
+    f_c = \dfrac{c_0}{2a} < f, \quad \beta_0 = \dfrac{2\pi f }{c_0}\left(\sqrt{1 - \left(\dfrac{f_c}{f}\right)^2}\right). 
+\end{equation}
+Υποθέτουμε ότι οι απώλειες οφείλονται αποκλειστικά στο διηλεκτρικό. Επομένως η μιγαδική σταθερά διάδοσης στο διηλεκτρικό είναι 
+\begin{equation*}
+    \gamma = \alpha_d + \beta_1. 
+\end{equation*}
+Τότε, έχουμε 
+\begin{align}
+    Z_A &= Z_1 \tanh (\gamma d) \\ 
+    Z_B &= Z_1 \tanh (2\gamma d). 
+\end{align} 
+Όμως, μπορούμε να υπολογίσουμε, κινούμε στην κενό τμήμα της γραμμής μεταφοράς 
+\begin{align}
+    Z_X &= Z_0 \dfrac{Z_A + jZ_0\tan(\beta_0(L - d))}{Z_0 + jZ_A\tan(\beta_0(L -d ))} \implies \\
+    Z_A &= Z_0 \dfrac{Z_X - jZ_0\tan(\beta_0(L - d))}{Z_0 - jZ_X\tan(\beta_0(L -d ))}. 
+\end{align}
+Ομοίως, 
+\begin{equation}
+    Z_B = Z_0 \dfrac{Z_Y - jZ_0\tan(\beta_0(L - 2d))}{Z_0 - jZ_Y\tan(\beta_0(L -2d ))}. 
+\end{equation}
+Διαιρώντας τις (2) και (3) κατά μέλη και αξιοποιώντας την ταυτότητα \(\tanh(2x) = \dfrac{2\tanh(x )}{1 + \tanh ^2(x)}\) προκύπτει ότι 
+\begin{gather}
+    \dfrac{Z_A }{Z_B } = \dfrac{\tanh(\gamma d )}{\tanh(2 \gamma d )} = \dfrac{1 }{2 }(1 + \tanh^2(\gamma d)) \implies \\ 
+    \tanh(\gamma d) = \pm \sqrt{2\cdot\frac{Z_A }{Z_B } - 1}
+\end{gather}
+απ' όπου προκύπτει 
+\begin{equation}
+    \gamma d = \pm(0.0723 + j0.635) + jn\pi. 
+\end{equation}
+Με συνοπτικές διαδικασίες επιλέγουμε τα θετικά (θετικές απώλειες και σταθερά διάδοσης) και \(n = 0\), οπότε 
+\[
+    \gamma = 48.195 + j423.33 \implies 
+     \left\{   \begin{aligned}
+            & \alpha_d = \SI{48.195}{Np/m} \\ 
+            & \beta_1 = \SI{423.333}{rad/m}
+        \end{aligned}
+    \right.
+\]
+Τώρα μπορούμε να υπολογίσουμε τη σχετική διηλεκτρική σταθερά
+\begin{equation}
+    \varepsilon_r = \left(\dfrac{f_c}{f}\right)^2 + \left(\dfrac{c_0 \beta_1}{2\pi f}\right)^2 = 4.510
+\end{equation}
+και προσεγγιστικά την εφαπτομένη απωλειών, αν η κυματική σταθερά εν κενώ είναι \(k_0 = \dfrac{2\pi f }{c_0}\), 
+\begin{equation}
+    \tan(\delta) = \dfrac{2\beta_1 \alpha_d }{k_1^2 } = \dfrac{2\beta_1 \alpha_d }{k_0^2\varepsilon_r } = 0.20599. 
+\end{equation}
+Χάρη στην ταυτότητα διπλασίου τόξου της υπερβολικής εφαπτομένης το πρόβλημα ανάγεται σε αρκετά απλούστερες εξισώσεις. \\
+
+\textbf{(β)} Στους ρυθμούς TE έχουμε σταθερά \(E_z = 0\). Δεδομένης και της απόσβεσης λόγω απωλειών, λοιπόν, μια από τις πολλές εξισώσεις των συνιστωσών των πεδίων γράφεται, αφού \(\dfrac{\partial E_z }{\partial x } = 0 \), 
+\begin{gather}
+    - \dfrac{\partial E_z }{\partial x } - \gamma E_x = -j\omega \mu H_y \implies \\
+    Z_1 = \dfrac{E_x }{H_y } = \dfrac{j\omega \mu }{\gamma} = \dfrac{j2\pi f \mu }{\gamma}. 
+\end{gather}
+Τώρα, η (2) γράφεται 
+\begin{equation}
+    \dfrac{Z_A }{j2\pi f \mu d} = \dfrac{\tanh(\gamma d)}{\gamma d} 
+\end{equation}
+που είναι υπερβατική εξίσωση με μόνο άγνωστο το \(\gamma\). 
+
+Λύνοντας την στη Julia, λαμβάνουμε 
+\[
+    \gamma' = 65.979 + j356.238 \implies 
+     \left\{   \begin{aligned}
+            & \alpha_d' = \SI{65.979}{Np/m} \\ 
+            & \beta_1' = \SI{356.278}{rad/m}
+        \end{aligned}
+     \right.
+\]
+που απέχει αρκετά από την προηγούμενη τιμή. Για αυτήν τη σύνθετη σταθερά διάδοσης προκύπτει ότι 
+\[
+    \varepsilon' = 3.32, \quad \tan(\delta ') = 0.322.
+\]
+Προφανώς κάτι έχει πάει στραβά. 
+
+Παραδόξως, αν αντί για την πρώτη, χρησιμοποιούσαμε μόνο τη δεύτερη μέτρηση, θα παίρναμε αποτελέσματα πολύ πιο κοντά σε αυτά του (α). Ενδεικτικά 
+\begin{equation}
+    \gamma'' = 52.0617 + j417.814. 
+\end{equation}
+
+\newpage
+\section*{2.2. Πεδίο στοιχειοκεραίας}
+
+\textbf{(α)} Αρνούμαι πεισματικά να γράψω κώδικα Matlab. 
+
+Κάθε δίπολο \(\lambda/2\) της στοιχειοκεραίας παράγει πεδίο 
+\begin{equation*}
+    E_{\theta n} = j60I\dfrac{\exp(jkr_n )\cos(\frac{\pi }{2 }\cos(\theta))}{r \sin(\theta)},
+\end{equation*}
+όπου \(r_n = r - \overline{d_n}\cdot \hat{r}\) με 
+\begin{equation}
+    \overline{d_n} = \dfrac{d }{2 }(2n - N - 1) \hat{x}
+\end{equation}
+για \(k = 1,\ldots, N\) και \(\hat{r }\) το μοναδιαία διάνυσμα στη διεύθυνση της θέσης. 
+Τότε, αν \[E_0 = j60I\dfrac{\exp(jkr )\cos(\frac{\pi }{2 }\cos(\theta))}{r \sin(\theta)},\]το πεδίο συνολικά είναι 
+\begin{align}
+    E_\theta = \sum_{n = 1 }^{N } E_{\theta n} &= 
+    j60I\dfrac{\exp(jkr )\cos(\frac{\pi }{2 }\cos(\theta))}{r \sin(\theta)}\sum_{n = 1}^{N } \exp(jkd_n\cos(\phi)\sin(\theta)) \\
+    &= 2E_0\sum_{m = 1}^{N/2}\cos\left(\left(m-\dfrac{1}{2}\right)kd \cos(\phi)\sin(\theta)\right). 
+\end{align}
+Και κατά μέτρο
+\begin{equation}
+    |E_0| = 60I\dfrac{\cos(\frac{\pi }{2 }\cos(\theta ))}{r \sin(\theta)}.
+\end{equation}
+
+
+\begin{itemize}
+    \item Για \(d = \lambda/4\)
+    \begin{center}
+        \includegraphics*[scale=0.6]{025xy.png}
+    \end{center}
+    \begin{center}
+        \includegraphics*[scale=0.6]{025xz.png}
+    \end{center}
+
+    \item Για \(d = \lambda/2\)
+    \begin{center}
+        \includegraphics*[scale=0.6]{050xy.png}
+    \end{center}
+    \begin{center}
+        \includegraphics*[scale=0.6]{050xz.png}
+    \end{center}
+
+    \item Για \(d = 3\lambda/4\)
+    \begin{center}
+        \includegraphics*[scale=0.6]{075xy.png}
+    \end{center}
+    \begin{center}
+        \includegraphics*[scale=0.6]{075xz.png}
+    \end{center}
+\end{itemize}
+
+\textbf{(β)} Αυτό μπορεί να γίνεται στο Matlab με δυο κλικ και πιθανώς με πολύ καλύτερη ακρίβεια από τη δικιά μου, αλλά τον κόπο μου τον πονάω, οπότε θα βάλω αυτά που παράγει ο κώδικας που έγραψα. 
+\begin{itemize}
+    \item Για \(d = \lambda/4\)
+    \begin{center}
+        \includegraphics*[scale=0.6]{025_3d.png}
+    \end{center}
+    \item Για \(d = \lambda/2\)
+    \begin{center}
+        \includegraphics*[scale=0.6]{050_3d.png}
+    \end{center}
+    \item Για \(d = 3\lambda/4\)
+    \begin{center}
+        \includegraphics*[scale=0.6]{075_3d.png}
+    \end{center}
+\end{itemize}
+Επισυνάπτονται και τα τρισδιάστατα διαδραστικά διαγράμματα ακτινοβολίας σε μορφή \texttt{.html}.  \\
+
+\textbf{(γ)} Η κατευθυντικότητα των κεραιών για την εκάστοτε απόσταση \(d \) υπολογίζεται ως εξής: 
+\begin{equation*}
+    D = \dfrac{4\pi r^2 P_{\max}}{W_r} = \dfrac{4\pi P_{\max}}{J}
+\end{equation*}
+όπου
+\begin{gather}
+    J = \int_{0}^{2\pi }\int_{0 }^{ \pi  }  P_r \sin(\theta) d\theta d\phi \\
+    P_r = \dfrac{|E_\theta|^2 }{2\eta_0} \\ 
+    P_{\max} = \max(P_r).
+\end{gather}
+Προσεγγίζουμε το \(J \) με τον ακόλουθο τρόπο. Διακριτοπιούμε τη σφαίρα με βήμα 1 μοίρα σε κάθε συνιστώσα. Επομένως \(d\theta \approx d\phi \approx \pi / 180\), άρα
+\begin{equation}
+    J \approx \dfrac{\pi^2}{180^2}\sum_{i = 0 }^{359} \sum_{j = 0 }^{180 } P_r \sin(\theta_j). 
+\end{equation}
+
+Από τα παραπάνω λαμβάνουμε
+\begin{itemize}
+    \item για \(d = \lambda/4\) 
+    \[D = 8.81, \quad D_{\text{th, multi}} = 4.0,\]
+
+    \item για \(d = \lambda/2\) 
+    \[D = 17.28, \quad D_{\text{th, multi}} = 8.0,\]
+
+    \item για \(d = 3\lambda/4\) 
+    \[D = 24.70, \quad D_{\text{th, multi}} = 12.0,\] 
+\end{itemize}
+όπου \(D_{\text{th, multi}} = \dfrac{2Nd }{\lambda}\) η κατευθυντικότητα της ευρύπλευρης στοιχειοκεραίας. 
+Σε κάθε περίπτωση διαπιστώνουμε ότι \[D > 2D_\text{th, multi}.\] Αυτό είνα εύλογο, αφού βάση των διαγραμμάτων ακτινοβολίας οι κεραίες της άσκησης εκπέμπουν μεγάλη ισχύ σε μια διεύθυνση σε αντίθεση με την ευρύπλευρες που εκπέμουν μικρότερη ισχύ μεν αλλά σε περισσότερς καυευθύνσεις. \\
+
+\textbf{(δ)} Οι συντεταγμένες γενικά αναφέρονται στο επίπεδο \(xy\). Τότε αν \(A \) το μέσο του διπόλου \(\lambda/2\), είναι \(A = (h_x, h_y)\). 
+Αντικαθιστούμε τους ανακλαστήρες με είδωλα κρατώντας μόνο τους περιορισμούς στην πολική γωνία \(\phi \in [0, \pi/2]\). 
+
+Τα είδωλα είναι τρία δίπολα \lambda/2 με συντεταγμένες \(B = (-h_x, h_y)\), \(C = (h_x, -h_y)\), \(D = (-h_x, -h_y)\) και ρεύματα \(-I\), \(-I\), \(+I\) αντίστοιχα. 
+Tότε 
+\begin{align}
+    d_1 &= + h_x \hat{x} + h_y \hat{y} \\
+    d_2 &= - h_x \hat{x} + h_y \hat{y} \\
+    d_3 &= + h_x \hat{x} - h_y \hat{y} \\
+    d_4 &= - h_x \hat{x} - h_y \hat{y}. 
+\end{align}
+Επομένως, με πανομοιότυπο τρόπο με τα προηγούμενα ερωτήματα προκύπτει
+\begin{align*}
+    |E_\theta| = |E_0&||\exp(jk(+h_x \cos(\phi)+h_y \sin(\phi)) \sin(\theta)) \\
+    &- \exp(jk(-h_x \cos(\phi) + h_y \sin(\phi)) \sin(\theta)) \\
+    &- \exp(jk(-h_x \cos(\phi) - h_y \sin(\phi)) \sin(\theta)) \\ 
+    &+ \exp(jk(+h_x \cos(\phi) - h_y \sin(\phi)) \sin(\theta))| \\
+    = 2|E_0|&|\cos(k(h_x \cos(\phi) + h_y \sin(\phi)) \sin(\theta)) - \cos(k(-h_x \cos(\phi) + h_y \sin(\phi)) \sin(\theta))| \\
+    = 4|E_0|&|\sin(k h_x \cos(\phi)\sin(\theta)) \sin(k h_y \sin(\phi)\sin(\theta))| 
+\end{align*}
+
+με \(E_{\max} = 4|E_0|\), όπου \(|E_0|\) είναι το ίδιο με την (19).
+
+Για μεγιστοποίηση στις \(\theta = \frac{\pi }{2 }\) και \(\phi = \frac{\pi }{4}\) πρέπει
+\begin{align}
+    \left|\sin\left(\frac{\sqrt{2 }}{2}kh_x\right)\sin\left(\frac{\sqrt{2 }}{2}kh_y\right)\right| = 1. 
+\end{align}
+Τότε, αφού έχουμε \(k = \dfrac{2\pi }{\lambda}\) και \(\lambda = \dfrac{c_0}{f} = \SI{3}{cm}\), προκύπτει 
+\begin{itemize}
+    \item (δ1)\quad \(h_x = \SI{0.0106}{m},\quad h_y = \SI{0.0106}{m}, \)
+    \item (δ2)\quad \(h_x = \SI{0.0106}{m},\quad h_y = \SI{0.0318}{m}, \)
+    \item (δ3)\quad \(h_x = \SI{0.0318}{m},\quad h_y = \SI{0.0318}{m}. \)
+\end{itemize}
+
+\newpage
+Διαγράμματα ακτινοβολίας
+\begin{itemize}
+    \item δ1
+    \begin{center}
+        \includegraphics*[scale=0.6]{d1_xy.png}
+    \end{center}
+    \begin{center}
+        \includegraphics*[scale=0.6]{d1_3d.png}
+    \end{center}
+
+    \item δ2
+    \begin{center}
+        \includegraphics*[scale=0.6]{d2_xy.png}
+    \end{center}
+    \begin{center}
+        \includegraphics*[scale=0.6]{d2_3d.png}
+    \end{center}
+
+    \item δ3
+    \begin{center}
+        \includegraphics*[scale=0.6]{d3_xy.png}
+    \end{center}
+    \begin{center}
+        \includegraphics*[scale=0.6]{d3_3d.png}
+    \end{center}
+\end{itemize}
+
+\newpage
+\section*{2.3. Διπλός παράλληλος κλαδωτής (αναλυτική λύση και εύρος ζώνης)}
+
+\textbf{(α)} Κανονικοποιούμε τα πάντα ως προς τη σύνθετη αγωγιμότητα της γραμμής \(Y_0\). Τα κανονικοποιημένα μεγέθη δηλώνονται με πεζά γράμματα. 
+Έστω \(y_1 \), \(y_2 \) οι αγωγιμότητες στο κοινό άκρο του φορτίου με τον πρώτο κλαδωτή και στο άκρο του δεύτερου κλαδωτή πάνω στη γραμμή μεταφοράς σε απόσταση \(d\) από το πρώτο αφαιρουμένης της αγωγιμότητας του δεύτερου κλαδωτή. 
+Τότε, αν  ορίσουμε τα πραγματικά μεταβλητά \(p\), \(q \) ως \(p := \tan(\beta\ell_1)\), \(q := \tan(\beta\ell_2)\), 
+\begin{align}
+    y_1 &= y_L + j\tan(\beta \ell_1) = y_L + jp\\
+    y_2 &= 1 - j\tan(\beta \ell_2) = 1 - jq.
+\end{align}
+Τότε, αν θέσουμε το σταθερό πραγματικό \(C := \tan(\beta d)\), προκύπτει 
+\begin{gather}
+    y_2 = \dfrac{y_1 + jC}{1 + jy_1 C} \implies \\
+    y_2 - y_1 + jy_1y_2C - jC = 0 \implies \\ 
+    1 - jq - y_L - jp + jy_LC - pC + qy_LC + jpqC - jC= 0 \\ \implies
+    \left\{   \begin{aligned}
+        & 1 - \Re(y_L) - C\Im(y_L) - pC + qC\Re(y_L) = 0 \\
+        & -q - \Im(y_L) - p + \Re(y_L)C + qC\Im(y_L) + pqC - C = 0 
+    \end{aligned}
+    \right.
+\end{gather}
+Επομένως, μένει να λυθεί ένα μη γραμμικό σύστημα εξισώσεων με μοναδικό μη γραμμικό όρο το \(pqC\) στη δεύτερη εξίσωση. Βγαίνει με αντικατάσταση. Θα προκύψουν δύο λύσεις, αφού τότε θα εμφανιστεί δευτεροβάθμιος όρος μετά την αντικατάσταση στη δεύτερη εξίσωση. \\
+
+\textbf{(β)} Είχα κάνει ήδη το διάγραμμα Smith, όταν έγραψα το προηγούμενο ερώτημα, οπότε δεν είχα την υπομονή να γράψω και software για την αναλυτική λύση. Να 'ναι καλά η προηγούμενη σειρά ασκήσεων που μου γλιττώνει τώρα αρκετή υλοποίηση. 
+
+Ξεκινάμε από το \(y_L = 0.77 + j1.15\) και θέλουμε να φτάσουμε για προσαρμογή στην αρχή των αξόνων. Περιστρέφουμε τον κύκλο \(g = 1\) ως προς την αρχή αριστερόστροφα κατά \(\lambda/8\), ώστε ο νέος κύκλος να τμηθεί με τον κύκλο \(g = \Re(y_L)\). 
+
+Οι τομές \(y_{1A}\) και \(y_{1B}\) είναι οι υποψήφιες αγωγιμότητες με την προσθήκη του πρώτου κλαδωτή στο κοινό άκρο με το φορτίο. Από αυτές κινούμαστε πάνω σε κύκλο σταθερού SWR κατά \(\lambda/8\) και χάρη στην προεργασία μας καταλήγουμε σε αμφότερες τις περιπτώσεις στον κύκλο \(g = 1\) και από εκεί προστίθεται η επιδεκτικότητα του δεύτερου κλαδωτή και φτάνουμε στην προσαρμογή, δηλαδή στην αρχή των αξόνων. 
+\begin{itemize}
+    \item Κόκκινη διαδρομή (θετικές επιδεκτικότητες κλαδωτών) 
+    \begin{align}
+        y_{1A} = 0.77 + j1.97 \implies jb_{1A} = j1.97 - j1.15 = j0.82 \implies \ell_{1A} &= 0.11\lambda \\ 
+        y_{2A} = 1 - j2.23 \implies jb_{2A} = j2.23 \implies \ell_{2A} &= 0.185\lambda
+    \end{align}
+    \item Πράσινη διαδρομή (αρνητικές επιδεκτικότητες κλαδωτών) 
+    \begin{align}
+        y_{1B} = 0.77 + j0.03 \implies jb_{1B} = j0.03 - j1.15 = -j1.12 \implies \ell_{1B} &= 0.372\lambda \\ 
+        y_{2B} = 1 + j0.25 \implies jb_{2B} = -j0.25 \implies \ell_{2B} &= 0.461\lambda
+    \end{align}
+\end{itemize}
+Εντούτοις, από το διάγραμμα του συντελεστή ανάκλασης φαίνεται πως το κύκλωμα με τους κλαδωτές μεγαλύτερου μήκους έχει μεγαλύτερο εύρος ζώνης. Στο γράφημα φαίνεται και το άνω φράγμα αποδεκτού μέτρου συντελεστή ανάκλασης
+\begin{equation*}
+    \text{SWR}_{\max} = 2 \implies |\Gamma|_{\max} = \frac{1 }{3 }. 
+\end{equation*}
+\begin{center}
+    \includegraphics*[scale = 0.28]{smith_2_3b.jpg}
+\end{center}
+\begin{center}
+    \includegraphics*[scale = 0.6]{reflection_2_3_b.png}
+\end{center}
+
+\textbf{(γ)} Από το διάγραμμα Smith φαίνεται ότι δεν είναι δυνατό να επιτευχθεί προσαρμογή με δύο πυκνωτές εν σειρά με τη γραμμή μεταφοράς. 
+
+Πράγματι, ξεκινάμε από τη γραμμή μεταφοράς, δηλαδή από την αρχή των αξόνων, και κινούμαστε προς το φορτίο \(z_L = 0.4 - j0.6\). 
+Εξαιτίας του πρώτου πυκνωτή, προσθέτουμε αντίδραση, οπότε κινούμαστε στον \(g = 1\) και φτάνουμε σε \(\Gamma\) με \(\arg(\Gamma) \in (0, \pi/2)\). Το τμήμα μήκους \(d = \lambda/8\) αντιστοιχεί σε αριστερόστροφη περιστροφή \(\pi/2\) στον κύκλο σταθερού \(|\Gamma|\).
+
+Οπότε φτάνουμε σε \(\arg(\Gamma) \in (\pi/2, \pi)\). Στο σημείο αυτό \(\Im(z) > 0\) και αφαιρώντας την αντίδραση του επόμενου πυκνωτή κινούμαστε μόνο στο άνω ημιεπίπεδο. Όμως \(\Im(z_L)\ < 0\), δηλαδή βρίσκεται στο κάτων ημιεπίπεδο που είναι άτοπο. 
+
+\begin{center}
+    \includegraphics*[scale = 0.28]{smith_2_3c.jpg}
+\end{center}
+
+\newpage
+\section*{2.4. Συντονιστής μικροταινίας συζευγμένος με γραμμή μεταφοράς}
+\textbf{(α)} Από γνωστές-άγνωστες σχέσεις του βιβλίου υπολογίζουμε
+\begin{gather}
+    w = \SI{3.059}{mm } \\
+    \varepsilon_{r, \text{eff}} = 3.302 \\
+    \lambda = \dfrac{c_0 }{f\sqrt{\varepsilon_{r, \text{eff}}}} = \SI{65.7}{mm } \\
+    \ell = \lambda/2 = \SI{32.856}{mm} \\
+    \beta = \dfrac{2\pi f\sqrt{\varepsilon_{r, \text{eff}}}}{c_0} = \SI{95.617}{\radian\per\meter} \\
+    \alpha = \dfrac{\beta }{2Q } = \SI{1.91234 }{\neper\per\meter }. 
+\end{gather}
+Δηλαδή το μήκος του συντονιστή είναι \(\lambda = \SI{65.7}{mm }\) και μένει να λύσουμε την υπερβατική εξίσωση
+\begin{equation}
+    \tan\left(\dfrac{2\pi f_r\sqrt{\varepsilon_{r, \text{eff}}}\ell}{c_0}\right) + \sqrt{\dfrac{\alpha c_0 }{2f_r\sqrt{\varepsilon_{r, \text{eff}}}}} = 0. 
+\end{equation}
+Αυτή δίνει συχνότητα συντονισμού 
+\begin{equation*}
+    f_r = \SI{2.2964}{GHz }.
+\end{equation*}
+Κατόπιν, υπολογίζεται η χωρητικότητα του διακένου
+\begin{gather}
+    b_c = -\tan(\beta_r\ell) = -\tan(\beta\frac{f_r}{r}\ell) = 0.2615\\ 
+    C_\text{gap} = \dfrac{b_c }{2\pi f_r Z_0} = \SI{0.362517 }{pF}. 
+\end{gather}
+
+Επίσης για επόμενα ερωτήματα, επειδή η απώλειες είναι κυρίως απώλειες διηλεκτρικού θεωρούμε προσεγγιστικά 
+\begin{gather}
+    \alpha \approx \alpha_d = \dfrac{k_0\varepsilon_r(\varepsilon_{r, \text{eff}} - 1) \tan(\delta)}{2\sqrt{\varepsilon_{r, \text{eff}}}(\varepsilon_r - 1)} \implies \\
+    \tan(\delta) = 0.04417.
+\end{gather}
+
+\textbf{(β)} Δεν μπόρεσα να το λύσω. 
+
+Σύμφωνα με τον Pozar, 4η έκδοση, σελίδα 303, δίαγραμμα 6.18, η αντίσταση της δίαταξης \(R\) είναι συνάρτηση μόνο της χωρητικότητας \(C_\text{gap}\) και όχι της συχνότητας. Δεν είμαι σίγουρος αν εννοούσε αυτό που γράφω και αν αυτό εννοούσε σίγουρα δεν κατάλαβα γιατί ισχύει. Ως εκ τούτου δεν μπορώ να είμαι βέβαιος ότι είναι σωστό. 
+
+Ωστόσο, για την χαρά της εξερεύνησης προσπάθησα να παίξω λίγο με αυτό, μήπως δώσει κάτι ο λόγος των ακτίνων των κύκλων σταθερού \(r\). 
+
+Ο ένας κύκλος ήταν ο \(r_1 = \dfrac{1}{\alpha \ell}\) από την αντίσταση της συμβατικής ανοιχτοκυκλωμένης γραμμής \(\lambda/2\) κρατώντας τις δύο τιμές από το προηγούμενο ερώτημα και ο άλλος ο \(r = 1\). \\
+
+\textbf{(γ)} Ειλικρίνα, δεν αντέχω άλλο. \(w, \varepsilon_{r, \text{eff}}\) μένουν σταθερά. Θέλουμε να βρούμε τη νέα συχνότητα συντονισμού \(f_s\) του ανοιχτοκυκλωμένου συντονιστή όταν δεν είναι συζευγμένος και δεν τροφοδείται. To νέο \(\alpha\) γράφεται ως συνάρτηση του \(f_s\), δηλαδή
+\begin{equation}
+    \alpha(f_s) = Ck(f_s) = \dfrac{2\pi C f_s}{c_0}, 
+\end{equation}
+όπου το \(C \) το παίρνουμε από την εξίσωση (48). 
+Ομοίως το μήκος του συντονιστή
+\begin{equation}
+    \ell(f_s) = \frac{1}{2}\lambda(f_s) = \dfrac{c_0 }{2f\sqrt{\varepsilon_{r, \text{eff}}}}
+\end{equation}
+Τα βάζουμε τώρα αυτά στην εξίσωση (45) με \(f_r = \SI{2.5 }{GHz }\) και λύνουμε ως προς \(f_s\), οπότε προκύπτει εν τέλει 
+\begin{equation}
+    f_s = \SI{2.72161}{GHz}
+\end{equation}
+Από εκεί υπολογίζουμε 
+\begin{gather}
+    b_s = -\tan(\beta \ell(f_s)) = 0.2615 \\
+    C_s = \dfrac{b_s }{2\pi f_s Z_0} = \SI{0.30588}{pF}.
+\end{gather}
+
+Λήξις. \\
+
+Υ.Γ. Το software δεν αρνούμαι ότι είναι για το ανάθεμα, και κακογραμμένο και χαώδες. 
+
+Το μόνο κομμάτι για το οποίο είμαι κάπως περήφανος είναι οι συναρτήσεις για να γίνουν τα διαγράμματα ακτινοβολίας, ιδιαίτερα τα τρισδιάστατα, στο \texttt{radiation.jl}. 
+\end{document}
