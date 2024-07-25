@@ -20,8 +20,8 @@ end
 function plot_3d(field, phisweep, thetasweep) 
     steps = length(thetasweep)
     s = field.(phisweep, permutedims(thetasweep))
-    x = s .* (cosd.(phi)* sind.(thetasweep)')
-    y = s .* (sind.(phi) * sind.(thetasweep)')
+    x = s .* (cosd.(phisweep)* sind.(thetasweep)')
+    y = s .* (sind.(phisweep) * sind.(thetasweep)')
     z = s .* (ones(steps) * cosd.(thetasweep)')
 
     p = plot(surface(x, y, z, color=:diverging, surfacecolor=@.sqrt(x^2 + y^2 + z^2)), legend=false, xlabel="X", ylabel="Y", zlabel="Z", title="3D Radiation Diagram")
